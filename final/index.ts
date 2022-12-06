@@ -2,7 +2,7 @@ import { join } from "path";
 import playwright from "playwright";
 import { table } from "table";
 import UserAgent from "user-agents";
-import { AmazonConfigs } from "./AmazonConfig";
+import { AmazonConfig } from "./AmazonConfig";
 import { CDiscountConfig } from "./CDiscountConfig";
 import { Scrapper, ScrapperConfig } from "./Scrapper";
 
@@ -30,13 +30,13 @@ const getPriceFromScrapper = async (
   });
 
   // All your configurations for each site. You can add as many as you want.
-  const scrapperConfigs: ScrapperConfig[] = [...AmazonConfigs, CDiscountConfig];
-  const search = "";
+  const scrapperConfigs: ScrapperConfig[] = [AmazonConfig, CDiscountConfig];
+  const search = "velo";
 
   const data: [string, string, string][] = [
     ["Product Title", "Price", "Product URL"],
     ...(await Promise.all(
-      scrapperConfigs.map(async (config) => {
+      scrapperConfigs.map(async (config, index) => {
         // We create a new page to have something clean for each scrapper
         const page = await context.newPage();
         try {
@@ -56,7 +56,7 @@ const getPriceFromScrapper = async (
             path: join(
               __dirname,
               "../screenshots",
-              `${url.replace(/https?:\/\//, "")}.png`
+              `${url.replace(/https?:\/\//, "")}-${index}.png`
             ),
           });
           return [
