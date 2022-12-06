@@ -4,7 +4,8 @@ import { ScrapperConfig } from "./Scrapper";
 export const CDiscountConfig: ScrapperConfig = (page: Page) => ({
   locators: {
     firstProductLink: page
-      .locator(".prdtBlocInline")
+      .locator("#lpBloc")
+      .locator('li')
       .nth(0)
       .locator("a")
       .nth(0),
