@@ -5,7 +5,11 @@ There are multiple steps to get started, and you can check the final results in 
 To get started you need to install:
 
 - [VSCode](https://code.visualstudio.com/) (or a code editor you like)
-- [NodeJS](https://nodejs.org/en/) LTS (on WSL, you can use [n](https://github.com/mklement0/n-install))
+
+The repo provide a devcontainer containing all dependencies needed to run the project. You need to have [Remote Development
+](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) extension installed.
+
+The container will install a `noVNC` instance, available on [`http://localhost:6080`](http://localhost:6080) (password is `vscode`).
 
 Then run:
 
@@ -20,3 +24,6 @@ npm run step-1
 npm run step-2
 npm run step-3
 ```
+
+- If there is an error, a screenshot will be saved in `screenshots` folder
+- You can enable debug mode by setting environment variable `PWDEBUG=1`
