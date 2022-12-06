@@ -27,3 +27,9 @@ npm run step-3
 
 - If there is an error, a screenshot will be saved in `screenshots` folder
 - You can enable debug mode by setting environment variable `PWDEBUG=1`
+
+You can open the slides by running
+
+```bash
+npm run slides
+```
